@@ -26,3 +26,5 @@ export const evenOrOdd = (number) => {
     return 'Odd'
   }
 }
+
+export const multiply = (num1, num2) => num1 * num2
