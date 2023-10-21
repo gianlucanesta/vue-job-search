@@ -12,11 +12,11 @@ describe('evenOrOdd', () => {
   it('indicates the number is even', () => {
     expect(evenOrOdd(4)).toBe('Even')
   })
-})
 
-describe('evenOrOdd', () => {
-  it('indicates the number is odd', () => {
-    expect(evenOrOdd(3)).toBe('Odd')
+  describe('when number is odd', () => {
+    it('indicates the number is odd', () => {
+      expect(evenOrOdd(3)).toBe('Odd')
+    })
   })
 })
 
