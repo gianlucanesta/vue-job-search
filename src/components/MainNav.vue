@@ -14,7 +14,7 @@
 
       <div class="ml-auto mr-5 flex h-full items-center">
         <ProfileImage v-if="isLoggedIn" />
-        <ActionButton v-else />
+        <ActionButton v-else @click="loginUser" />
       </div>
     </div>
   </div>
@@ -35,6 +35,11 @@ export default {
       url: 'https://careers.google.com',
       menuItems: ['Teams', 'Locations', 'Life at Corp', 'How we hire', 'Students', 'Jobs'],
       isLoggedIn: false
+    }
+  },
+  methods: {
+    loginUser() {
+      this.isLoggedIn = true
     }
   }
 }
