@@ -6,23 +6,8 @@
 
       <nav class="ml-12 h-full">
         <ul class="flex h-full list-none">
-          <li class="h-full">
-            <a href="" class="flex h-full items-center py-2.5">Teams</a>
-          </li>
-          <li class="ml-9 h-full">
-            <a href="" class="flex h-full items-center py-2.5">Location</a>
-          </li>
-          <li class="ml-9 h-full">
-            <a href="" class="flex h-full items-center py-2.5">Life at Corp</a>
-          </li>
-          <li class="ml-9 h-full">
-            <a href="" class="flex h-full items-center py-2.5">How we hire</a>
-          </li>
-          <li class="ml-9 h-full">
-            <a href="" class="flex h-full items-center py-2.5">Students</a>
-          </li>
-          <li class="ml-9 h-full">
-            <a href="" class="flex h-full items-center py-2.5">Jobs</a>
+          <li class="h-full" v-for="menuItem in menuItems">
+            <a href="" class="flex h-full items-center py-2.5 ml-3"> {{ menuItem }}</a>
           </li>
         </ul>
       </nav>
@@ -36,7 +21,8 @@ export default {
   data() {
     return {
       company: 'My Career',
-      url: 'https://careers.google.com'
+      url: 'https://careers.google.com',
+      menuItems: ['Teams', 'Locations', 'Life at Corp', 'How we hire', 'Students', 'Jobs']
     }
   }
 }
