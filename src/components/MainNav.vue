@@ -6,7 +6,7 @@
 
       <nav class="ml-12 h-full">
         <ul class="flex h-full list-none">
-          <li class="h-full" v-for="menuItem in menuItems">
+          <li class="h-full" v-for="menuItem in menuItems" :key="menuItem">
             <a href="" class="flex h-full items-center py-2.5 ml-3"> {{ menuItem }}</a>
           </li>
         </ul>
