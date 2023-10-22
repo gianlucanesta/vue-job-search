@@ -2,7 +2,7 @@
 
 import { render, screen } from '@testing-library/vue'
 import MainNav from '@/components/MainNav.vue'
-import { expect } from 'vitest'
+import { describe, expect } from 'vitest'
 // import { expect } from 'vitest'
 
 describe('MainNav', () => {
@@ -27,5 +27,16 @@ describe('MainNav', () => {
       'Jobs'
     ])
     console.log('🚀 ~ file: MainNav.test.js:20 ~ it ~ navigationMenuText:', navigationMenuText)
+  })
+
+  describe('when the user logs in', () => {
+    it('displays user profile picture', () => {
+      render(MainNav)
+
+      const profileImage = screen.queryByRole('img', {
+        name: /user profile image/i
+      })
+      // expect(profileImage).not.toBeInTheDocument()
+    })
   })
 })
