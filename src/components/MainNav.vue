@@ -12,7 +12,9 @@
         </ul>
       </nav>
 
-      <div class="ml-auto mr-5 flex h-full items-center"><ActionButton /></div>
+      <div class="ml-auto mr-5 flex h-full items-center">
+        <ActionButton v-if="!isLoggedIn" />
+      </div>
     </div>
   </div>
 </template>
@@ -28,7 +30,8 @@ export default {
     return {
       company: 'My Career',
       url: 'https://careers.google.com',
-      menuItems: ['Teams', 'Locations', 'Life at Corp', 'How we hire', 'Students', 'Jobs']
+      menuItems: ['Teams', 'Locations', 'Life at Corp', 'How we hire', 'Students', 'Jobs'],
+      isLoggedIn: false
     }
   }
 }
