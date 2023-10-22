@@ -11,13 +11,19 @@
           </li>
         </ul>
       </nav>
+
+      <div class="ml-auto mr-5 flex h-full items-center"><ActionButton /></div>
     </div>
   </div>
 </template>
 
 <script>
+import ActionButton from '@/components/ActionButton.vue'
 export default {
   name: 'MainNav',
+  components: {
+    ActionButton
+  },
   data() {
     return {
       company: 'My Career',
