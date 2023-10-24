@@ -1,8 +1,5 @@
 <template>
-  <button
-    @click="handleClick"
-    class="rounded border-0 bg-brand-blue-1 hover:shadow-blue px-5 py-3 font-medium text-white"
-  >
+  <button @click="handleClick" class="primary">
     {{ text }}
   </button>
 </template>
@@ -18,3 +15,12 @@ export default {
   props: ['text']
 }
 </script>
+<style scoped>
+button {
+  @apply rounded px-5 py-3 font-medium;
+}
+
+.primary {
+  @apply border-0 bg-brand-blue-1 text-white hover:shadow-blue;
+}
+</style>
