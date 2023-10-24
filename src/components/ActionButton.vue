@@ -1,5 +1,5 @@
 <template>
-  <button @click="handleClick" :class="{ primary: true }">
+  <button @click="handleClick" :class="{ primary }">
     {{ text }}
   </button>
 </template>
@@ -12,7 +12,12 @@ export default {
       console.log(event)
     }
   },
-  props: ['text']
+  props: ['text'],
+  data() {
+    return {
+      primary: true
+    }
+  }
 }
 </script>
 <style scoped>
