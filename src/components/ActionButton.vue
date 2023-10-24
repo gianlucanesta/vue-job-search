@@ -1,5 +1,5 @@
 <template>
-  <button @click="handleClick" class="primary">
+  <button @click="handleClick" :class="{ primary: true }">
     {{ text }}
   </button>
 </template>
