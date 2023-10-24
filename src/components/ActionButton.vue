@@ -3,7 +3,7 @@
     @click="handleClick"
     class="rounded border-0 bg-brand-blue-1 hover:shadow-blue px-5 py-3 font-medium text-white"
   >
-    Sign in
+    {{ text }}
   </button>
 </template>
 
@@ -14,6 +14,7 @@ export default {
     handleClick(event) {
       console.log(event)
     }
-  }
+  },
+  props: ['text']
 }
 </script>
