@@ -1,5 +1,5 @@
 <template>
-  <button :class="{ primary }" @click="doubleHeight">
+  <button :class="buttonClass" @click="doubleHeight">
     Height {{ height }} Area {{ area }}
     {{ text }}
   </button>
@@ -27,6 +27,13 @@ export default {
       primary: true,
       width: 10,
       height: 5
+    }
+  },
+  computed: {
+    buttonClass() {
+      return {
+        primary: this.primary
+      }
     }
   }
 }
