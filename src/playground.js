@@ -12,3 +12,11 @@ const lowerCaseName = names.map((name) => {
   return name.toLowerCase()
 })
 console.log('🚀 ~ file: playground.js:12 ~ lowerCaseName ~ lowerCaseName:', lowerCaseName)
+
+const favouriteFood = 'sushi'
+
+const goodFood = {
+  favouriteFood: true
+}
+
+console.log(goodFood)
