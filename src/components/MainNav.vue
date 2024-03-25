@@ -14,7 +14,7 @@
 
       <div class="ml-auto mr-5 flex h-full items-center">
         <ProfileImage v-if="isLoggedIn" />
-        <ActionButton v-else text="Sign in" :is-primary="false" @click="loginUser" />
+        <ActionButton v-else text="Sign in" type="secondary" @click="loginUser" />
       </div>
     </div>
   </div>

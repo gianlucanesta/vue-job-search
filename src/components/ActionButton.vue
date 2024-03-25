@@ -11,25 +11,14 @@
 <script>
 export default {
   name: 'ActionButton',
-  computed: {
-    area() {
-      return this.width * this.height
-    }
-  },
-  methods: {
-    handleClick(event) {
-      console.log(event)
-    },
-    doubleHeight() {
-      this.height = this.height * 2
-    }
-  },
-  props: ['text', 'isPrimary'],
+
+  methods: {},
+  props: ['text', 'type'],
   computed: {
     buttonClass() {
       return {
-        primary: this.isPrimary,
-        secondary: !this.isPrimary
+        primary: this.type === 'primary',
+        secondary: this.type === 'secondary'
       }
     }
   }
