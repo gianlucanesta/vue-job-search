@@ -24,19 +24,12 @@ export default {
       this.height = this.height * 2
     }
   },
-  props: ['text'],
-  data() {
-    return {
-      primary: true,
-      width: 10,
-      height: 5
-    }
-  },
+  props: ['text', 'isPrimary'],
   computed: {
     buttonClass() {
       return {
-        primary: this.primary,
-        secondary: !this.primary
+        primary: this.isPrimary,
+        secondary: !this.isPrimary
       }
     }
   }
