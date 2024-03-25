@@ -1,6 +1,9 @@
 <template>
-  <button :class="buttonClass" @click="doubleHeight">
+  <!-- <button :class="buttonClass" @click="doubleHeight">
     Height {{ height }} Area {{ area }}
+    {{ text }}
+  </button> -->
+  <button :class="buttonClass">
     {{ text }}
   </button>
 </template>
@@ -32,7 +35,8 @@ export default {
   computed: {
     buttonClass() {
       return {
-        primary: this.primary
+        primary: this.primary,
+        secondary: !this.primary
       }
     }
   }
@@ -45,5 +49,9 @@ button {
 
 .primary {
   @apply border-0 bg-brand-blue-1 text-white hover:shadow-blue;
+}
+
+.secondary {
+  @apply bg-transparent text-brand-blue-1 hover:bg-brand-blue-2  hover:text-white;
 }
 </style>
