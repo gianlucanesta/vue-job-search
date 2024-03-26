@@ -6,6 +6,11 @@ describe('TheSubnav', () => {
   describe("when the user is on the 'Jobs' page", () => {
     it('displays jobs count', () => {
       render(TheSubnav, {
+        global: {
+          stubs: {
+            FontAwesomeIcon: true
+          }
+        },
         data() {
           return {
             onJobResultsPage: true
