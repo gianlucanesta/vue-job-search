@@ -4,17 +4,25 @@ import userEvent from '@testing-library/user-event'
 import MainNav from '@/components/MainNav.vue'
 
 describe('MainNav', () => {
+  const renderMainNav = () => {
+    render(MainNav, {
+      global: {
+        stubs: {
+          FontAwesomeIcon: true
+        }
+      }
+    })
+  }
+
   it('displays company name', () => {
-    render(MainNav)
+    renderMainNav()
     const companyName = screen.getByText('My Career')
-    console.log('🚀 ~ file: MainNav.test.js:11 ~ it ~ companyName:', companyName)
     // expect(companyName).toBeInTheDocument()
   })
 
   it('displays menu items for navigation', () => {
-    render(MainNav)
+    renderMainNav()
     const navigationMenuItems = screen.getAllByRole('listitem')
-    console.log('🚀 ~ file: MainNav.test.js:18 ~ it ~ navigationMenuItems:', navigationMenuItems)
     const navigationMenuText = navigationMenuItems.map((item) => item.textContent)
     expect(navigationMenuText).toEqual([
       'Teams',
@@ -24,12 +32,11 @@ describe('MainNav', () => {
       'Students',
       'Jobs'
     ])
-    console.log('🚀 ~ file: MainNav.test.js:20 ~ it ~ navigationMenuText:', navigationMenuText)
   })
 
   describe('when the user logs in', () => {
     it('displays user profile picture', async () => {
-      render(MainNav)
+      renderMainNav()
 
       let profileImage = screen.queryByRole('img', {
         name: /user profile image/i
