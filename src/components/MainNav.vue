@@ -13,11 +13,11 @@
       </nav>
 
       <div class="ml-auto mr-5 flex h-full items-center">
-        <ProfileImage v-if="isLoggedIn" />
+        <ProfileImage v-if="isLoggedIn" @click="logoutUser" />
         <ActionButton v-else text="Sign in" type="secondary" @click="loginUser" />
       </div>
     </div>
-    <the-subnav />
+    <the-subnav v-if="isLoggedIn" />
   </div>
 </template>
 
@@ -44,6 +44,9 @@ export default {
   methods: {
     loginUser() {
       this.isLoggedIn = true
+    },
+    logoutUser() {
+      this.isLoggedIn = false
     }
   }
 }
