@@ -4,19 +4,24 @@ import { render, screen } from '@testing-library/vue'
 import TheHeadline from '@/components/TheHeadline.vue'
 
 describe('TheHeadline', () => {
-  it('displays introductory action verb', () => {
+  beforeEach(() => {
     vi.useFakeTimers()
+  })
+
+  afterEach(() => {
+    vi.useRealTimers()
+  })
+
+  it('displays introductory action verb', () => {
     render(TheHeadline)
 
     const actionPhrase = screen.getByRole('heading', {
       name: /build for everyone/i
     })
     // expect(actionPhrase).toBeInTheDocument()
-    vi.useRealTimers()
   })
 
   it('changes action verb at a consistent interval', () => {
-    vi.useFakeTimers()
     const mock = vi.fn()
     vi.stubGlobal('setInterval', mock)
     render(TheHeadline)
@@ -25,7 +30,6 @@ describe('TheHeadline', () => {
   })
 
   it('swaps action verb after interval', async () => {
-    vi.useFakeTimers()
     render(TheHeadline)
     vi.advanceTimersToNextTimer()
 
