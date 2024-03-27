@@ -12,6 +12,18 @@
 </template>
 <script>
 export default {
-  name: 'TheHero'
+  name: 'TheHero',
+  beforeCreate() {
+    console.log('TheHero beforeCreate')
+  },
+  created() {
+    console.log('TheHero created')
+  },
+  beforeMount() {
+    console.log('TheHero beforeMount')
+  },
+  mounted() {
+    console.log('TheHero mounted')
+  }
 }
 </script>
