@@ -1,8 +1,4 @@
 <template>
-  <!-- <button :class="buttonClass" @click="doubleHeight">
-    Height {{ height }} Area {{ area }}
-    {{ text }}
-  </button> -->
   <button :class="buttonClass">
     {{ text }}
   </button>
