@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import nextElementInList from '../utils/nextElementInList'
 export default {
   name: 'TheHeadline',
   data() {
@@ -32,7 +33,10 @@ export default {
   },
   methods: {
     changeTitle() {
-      this.interval = setInterval(() => {}, 3000)
+      this.interval = setInterval(() => {
+        const actions = ['Build', 'Create', 'Design', 'Code']
+        this.action = nextElementInList(actions, this.action)
+      }, 3000)
     }
   }
 }
