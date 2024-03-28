@@ -17,8 +17,8 @@
   </main>
 </template>
 <script>
-import TheHeadline from './TheHeadline.vue'
-import JobSearchForm from './JobSearchForm.vue'
+import TheHeadline from '@/components/JobSearch/TheHeadline.vue'
+import JobSearchForm from '@/components/JobSearch/JobSearchForm.vue'
 export default {
   name: 'TheHero',
   components: {
