@@ -4,8 +4,7 @@
     <div class="flex flex-1 flex-nowrap h-full text-base font-light">
       <div class="relative flex h-full flex-1 items-center pr-3">
         <label for="" class="absolute left-0 -top-10">Role</label>
-        <!-- <input v-model="role" /> -->
-        <text-input placeholder="Software engineer" />
+        <text-input placeholder="Software engineer" @handleInput="updateRole" />
         <span
           class="flex h-full items-center border-l border-r border-solid border-brand-gray-3 bg-brand-gray-2 px-3"
         >
@@ -14,8 +13,7 @@
       </div>
       <div class="relative flex h-full flex-1 items-center pr-3">
         <label for="" class="absolute left-0 -top-10">Where?</label>
-        <!-- <input v-model="location" /> -->
-        <text-input placeholder="Los Angeles, CA" />
+        <text-input placeholder="Los Angeles, CA" @handleInput="location" />
       </div>
     </div>
     <action-button text="Search" type="secondary" class="rounded-r-3xl" />
@@ -34,6 +32,10 @@ export default {
       location: ''
     }
   },
-  methods: {}
+  methods: {
+    updateRole(payload) {
+      console.log(payload)
+    }
+  }
 }
 </script>

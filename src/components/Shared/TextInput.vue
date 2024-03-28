@@ -18,10 +18,7 @@ export default {
   methods: {
     handleInput($event) {
       this.value = $event.target.value
-<<<<<<< HEAD
       this.$emit('handleInput', this.value)
-=======
->>>>>>> 75f75fcae27ce78b7003bc699d24b352ede85c79
     }
   }
 }
