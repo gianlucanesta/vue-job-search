@@ -14,7 +14,7 @@
 
         <div class="ml-auto mr-5 flex h-full items-center">
           <ProfileImage v-if="isLoggedIn" @click="logoutUser" />
-          <ActionButton v-else text="Sign in" type="secondary" @click="loginUser" />
+          <ActionButton v-else text="Sign in" type="secondary" @click="loginUser" class="rounded" />
         </div>
       </div>
       <the-subnav v-if="isLoggedIn" />
