@@ -9,6 +9,7 @@
           :value="role"
           placeholder="Software engineer"
           class="h-full w-full text-lg font-normal border-0 bg-transparent p-2 pr-12 focus:outline-none"
+          @input="updateRole"
         />
         <span
           class="flex h-full items-center border-l border-r border-solid border-brand-gray-3 bg-brand-gray-2 px-3"
@@ -23,6 +24,7 @@
           :value="location"
           placeholder="Los Angeles, CA"
           class="h-full w-full text-lg font-normal border-0 bg-transparent p-2 pr-12 focus:outline-none"
+          @input="updateLocation"
         />
       </div>
     </div>
@@ -34,12 +36,20 @@
 import ActionButton from '@/components/ActionButton.vue'
 export default {
   name: 'JobSearchForm',
+  components: { ActionButton },
   data() {
     return {
       role: '',
       location: ''
     }
   },
-  components: { ActionButton }
+  methods: {
+    updateRole(event) {
+      this.role = event.target.value
+    },
+    updateLocation(event) {
+      this.location = event.target.value
+    }
+  }
 }
 </script>
