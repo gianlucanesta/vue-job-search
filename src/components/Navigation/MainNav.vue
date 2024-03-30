@@ -2,7 +2,9 @@
   <header :class="['w-full', 'text-sm', headerHeightClass]">
     <div class="fixed top-0 left-0 w-full h-16 bg-white">
       <div class="flex flex-nowrap h-full border-b border-solid border-brand-gray-1">
-        <a class="flex h-full items-center text-xl ml-5" :href="url">{{ company }}</a>
+        <router-link class="flex h-full items-center text-xl ml-5" :to="{ name: 'Home' }"
+          >My Career</router-link
+        >
 
         <nav class="ml-12 h-full">
           <ul class="flex h-full list-none">
@@ -36,8 +38,6 @@ export default {
   },
   data() {
     return {
-      company: 'My Career',
-      url: 'https://careers.google.com',
       menuItems: ['Teams', 'Locations', 'Life at Corp', 'How we hire', 'Students', 'Jobs'],
       isLoggedIn: false
     }
