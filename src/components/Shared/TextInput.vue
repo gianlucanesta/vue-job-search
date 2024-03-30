@@ -10,9 +10,10 @@
 <script>
 export default {
   name: 'TextInput',
-  data() {
-    return {
-      value: ''
+  props: {
+    value: {
+      type: String,
+      required: true
     }
   },
   methods: {
