@@ -4,10 +4,12 @@ import { RouterLinkStub } from '@vue/test-utils'
 import JobListing from '@/components/JobResults/JobListing.vue'
 
 describe('JobListing', () => {
-  it('renders job title', () => {
-    const job = {
-      title: 'Vue Developer'
-    }
+  const createJobProps = (jobProps = {}) => ({
+    title: 'Vue Developer',
+    organization: 'AirBnb',
+    ...jobProps
+  })
+  const renderJobListing = (jobProps) => {
     render(JobListing, {
       global: {
         stubs: {
@@ -15,28 +17,21 @@ describe('JobListing', () => {
         }
       },
       props: {
-        job
+        job: {
+          ...jobProps
+        }
       }
     })
-    const jobTitle = screen.getByText('Vue Developer')
-    // expect(jobTitle).toBeInTheDocument()
+  }
+  it('renders job title', () => {
+    const jobProps = createJobProps({ title: 'Vue Developer' })
+    renderJobListing(jobProps)
+    // expect(screen.getByText("Vue Developer")).toBeInTheDocument()
   })
 
   it('renders job organization', () => {
-    const job = {
-      organization: 'Acme Inc.'
-    }
-    render(JobListing, {
-      global: {
-        stubs: {
-          RouterLink: RouterLinkStub
-        }
-      },
-      props: {
-        job
-      }
-    })
-    const jobOrganization = screen.getByText('Acme Inc.')
-    // expect(jobOrganization).toBeInTheDocument()
+    const jobProps = createJobProps({ organization: 'AirBnb' })
+    renderJobListing(jobProps)
+    // expect(screen.getByText("AirBnb")).toBeInTheDocument()
   })
 })
