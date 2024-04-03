@@ -1,3 +1,4 @@
+|
 <template>
   <input
     type="text"
