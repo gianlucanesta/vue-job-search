@@ -12,6 +12,24 @@
               <div class="mr-5"><span>Meta</span></div>
               <div class="mr-5"><span>San Francisco, CA, USA</span></div>
             </div>
+
+            <div class="px-8 py-4">
+              <div>
+                <h3 class="mt-1 mb-2">Qualifications:</h3>
+                <div>
+                  <ul class="list-disc pl-8">
+                    <li>Bachelors or Masters in Computer Science</li>
+                    <li>5+ years of experience in a similar role</li>
+                    <li>Excellent written and verbal communication skills</li>
+                    <li>Ability to work well in a team</li>
+                    <li>Strong attention to detail</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="mt-2 text-center">
+                <router-link to="/jobs/results/1" class="text-brand-blue-1">Expand</router-link>
+              </div>
+            </div>
           </div>
         </router-link>
       </li>
