@@ -32,3 +32,9 @@ const interval = setInterval(() => {
 setTimeout(() => {
   clearInterval(interval)
 }, 10000)
+
+const axios = require('axios')
+const url = 'http://localhost:5000/jobs'
+axios.get(url).then((response) => {
+  console.log('🚀 ~ file: playground.js:39 ~ response.data', response.data)
+})
