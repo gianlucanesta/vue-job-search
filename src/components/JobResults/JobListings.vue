@@ -7,11 +7,22 @@
 </template>
 
 <script>
+import axios from 'axios'
 import JobListing from '@/components/JobResults/JobListing.vue'
 export default {
   name: 'JobListings',
   components: {
     JobListing
+  },
+  data() {
+    return {
+      jobs: []
+    }
+  },
+  mounted() {
+    axios.get('http://localhost:5000/jobs').then((response) => {
+      this.jobs = response.data
+    })
   }
 }
 </script>
