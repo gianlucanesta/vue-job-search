@@ -21,8 +21,12 @@ export default {
   },
   computed: {
     displayedJobs() {
+      const pageString = this.$route.query.page || 1
+      const pageNumber = Number.parseInt(pageString)
+      const firstJobIndex = (pageNumber - 1) * 10
+      const lastJobIndex = firstJobIndex + 10
       if (this.jobs.length > 0) {
-        return this.jobs.slice(0, 10)
+        return this.jobs.slice(firstJobIndex, lastJobIndex)
       } else {
         return []
       }
