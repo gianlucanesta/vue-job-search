@@ -11,7 +11,17 @@ describe('JobListings', () => {
         jobs: []
       }
     })
-    render(JobListings)
+    const $route = { query: { page: 1 } }
+    render(JobListings, {
+      global: {
+        mocks: {
+          $route: $route
+        },
+        stubs: {
+          RouterLink: RouterLinkStub
+        }
+      }
+    })
     expect(axios.get).toHaveBeenCalledWith('http://localhost:5000/jobs')
   })
   it('displays maximum of 10 jobs', async () => {

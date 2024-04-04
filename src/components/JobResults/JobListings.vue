@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     displayedJobs() {
-      const pageString = this.$route.query.page || 1
+      const pageString = this.$route?.query.page || 1
       const pageNumber = Number.parseInt(pageString)
       const firstJobIndex = (pageNumber - 1) * 10
       const lastJobIndex = firstJobIndex + 10
