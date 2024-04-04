@@ -47,4 +47,8 @@ const fetchJobsV2 = async () => {
   console.log('🚀 ~ file: playground.js:39 ~ response.data', response.data)
 }
 
-fetchJobsV2()
+// fetchJobsV2()
+
+const sushi = ['Tuna', 'Salmon', 'Yellowtail', 'Eel', 'Shrimp', 'Octopus', 'Uni']
+
+console.log(sushi.slice(2, 4))
