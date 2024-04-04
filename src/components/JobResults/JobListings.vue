@@ -28,6 +28,16 @@ export default {
     currentPage() {
       return Number.parseInt(this.$route.query.page || 1)
     },
+    previousPage() {
+      const previousPage = this.currentPage - 1
+      const firstPage = 1
+      return previousPage >= firstPage ? previousPage : null
+    },
+    nextPage() {
+      return this.currentPage + 1
+      const maxPage = Math.ceil(this.jobs.length / 10)
+      return this.currentPage < maxPage ? this.currentPage + 1 : null
+    },
     displayedJobs() {
       const pageNumber = this.currentPage
       const firstJobIndex = (pageNumber - 1) * 10
