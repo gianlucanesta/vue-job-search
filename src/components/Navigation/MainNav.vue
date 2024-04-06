@@ -17,8 +17,14 @@
         </nav>
 
         <div class="ml-auto mr-5 flex h-full items-center">
-          <ProfileImage v-if="userStore.isLoggedIn" @click="logoutUser" />
-          <ActionButton v-else text="Sign in" type="secondary" @click="loginUser" class="rounded" />
+          <ProfileImage v-if="userStore.isLoggedIn" @click="userStore.logoutUser" />
+          <ActionButton
+            v-else
+            text="Sign in"
+            type="secondary"
+            @click="userStore.loginUser"
+            class="rounded"
+          />
         </div>
       </div>
       <the-subnav v-if="userStore.isLoggedIn" />
@@ -76,13 +82,6 @@ export default {
       return this.userStore.isLoggedIn ? 'h-32' : 'h-16'
     }
   },
-  methods: {
-    loginUser() {
-      this.userStore.isLoggedIn = true
-    },
-    logoutUser() {
-      this.userStore.isLoggedIn = false
-    }
-  }
+  methods: {}
 }
 </script>
