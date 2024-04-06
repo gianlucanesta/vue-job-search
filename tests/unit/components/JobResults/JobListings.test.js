@@ -100,6 +100,7 @@ describe('JobListings', () => {
       await screen.findAllByRole('listitem')
 
       const nextLink = screen.queryByRole('link', { name: /next/i })
+      // screen.debug()
       // expect(nextLink).toBeInTheDocument()
     })
   })
