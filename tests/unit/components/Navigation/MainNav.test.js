@@ -4,6 +4,7 @@ import { RouterLinkStub } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 
 import MainNav from '@/components/Navigation/MainNav.vue'
+import { useUserStore } from '@/stores/user'
 
 describe('MainNav', () => {
   const renderMainNav = () => {
@@ -26,7 +27,7 @@ describe('MainNav', () => {
   it('displays company name', () => {
     renderMainNav()
     const companyName = screen.getByText('My Career')
-    // expect(companyName).toBeInTheDocument()
+    expect(companyName).toBeInTheDocument()
   })
 
   it('displays menu items for navigation', () => {
@@ -46,21 +47,23 @@ describe('MainNav', () => {
   describe('when the user logs in', () => {
     it('displays user profile picture', async () => {
       renderMainNav()
+      // const userStore = useUserStore()
 
       let profileImage = screen.queryByRole('img', {
         name: /user profile image/i
       })
-      // expect(profileImage).not.toBeInTheDocument()
+      expect(profileImage).not.toBeInTheDocument()
 
       const loginButton = screen.getByRole('button', {
         name: /sign in/i
       })
+      // userStore.isLoggedIn = true
       await userEvent.click(loginButton)
 
       profileImage = screen.queryByRole('img', {
         name: /user profile image/i
       })
-      // expect(profileImage).toBeInTheDocument()
+      expect(profileImage).toBeInTheDocument()
     })
   })
 })
