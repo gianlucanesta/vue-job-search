@@ -8,13 +8,17 @@ import { useUserStore } from '@/stores/user'
 
 describe('MainNav', () => {
   const renderMainNav = () => {
-    const pinia = createTestingPinia({ stubActions: false })
-    const $route = { name: 'Home' }
+    const pinia = createTestingPinia()
+
+    const $route = {
+      name: 'Home'
+    }
+
     render(MainNav, {
       global: {
         plugins: [pinia],
         mocks: {
-          $route: $route
+          $route
         },
         stubs: {
           FontAwesomeIcon: true,
@@ -26,15 +30,15 @@ describe('MainNav', () => {
 
   it('displays company name', () => {
     renderMainNav()
-    const companyName = screen.getByText('My Career')
+    const companyName = screen.getByText('My Careers')
     expect(companyName).toBeInTheDocument()
   })
 
   it('displays menu items for navigation', () => {
     renderMainNav()
     const navigationMenuItems = screen.getAllByRole('listitem')
-    const navigationMenuText = navigationMenuItems.map((item) => item.textContent)
-    expect(navigationMenuText).toEqual([
+    const navigationMenuTexts = navigationMenuItems.map((item) => item.textContent)
+    expect(navigationMenuTexts).toEqual([
       'Teams',
       'Locations',
       'Life at Corp',
@@ -47,7 +51,7 @@ describe('MainNav', () => {
   describe('when the user logs in', () => {
     it('displays user profile picture', async () => {
       renderMainNav()
-      // const userStore = useUserStore()
+      const userStore = useUserStore()
 
       let profileImage = screen.queryByRole('img', {
         name: /user profile image/i
@@ -57,10 +61,10 @@ describe('MainNav', () => {
       const loginButton = screen.getByRole('button', {
         name: /sign in/i
       })
-      // userStore.isLoggedIn = true
+      userStore.isLoggedIn = true
       await userEvent.click(loginButton)
 
-      profileImage = screen.queryByRole('img', {
+      profileImage = screen.getByRole('img', {
         name: /user profile image/i
       })
       expect(profileImage).toBeInTheDocument()
