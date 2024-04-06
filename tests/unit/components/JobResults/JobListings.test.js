@@ -57,7 +57,7 @@ describe('JobListings', () => {
 
       renderJobListings($route)
 
-      // expect(screen.getByText('Page 1')).toBeInTheDocument()
+      expect(screen.getByText('Page 1')).toBeInTheDocument()
     })
   })
 
@@ -68,7 +68,7 @@ describe('JobListings', () => {
 
       renderJobListings($route)
 
-      // expect(screen.getByText('Page 2')).toBeInTheDocument()
+      expect(screen.getByText('Page 2')).toBeInTheDocument()
     })
   })
 
@@ -85,7 +85,7 @@ describe('JobListings', () => {
       await screen.findAllByRole('listitem')
 
       const previousLink = screen.queryByRole('link', { name: /previous page/i })
-      // expect(previousLink).not.toBeInTheDocument()
+      expect(previousLink).not.toBeInTheDocument()
     })
 
     it('shows link to next page', async () => {
@@ -101,7 +101,7 @@ describe('JobListings', () => {
 
       const nextLink = screen.queryByRole('link', { name: /next/i })
       // screen.debug()
-      // expect(nextLink).toBeInTheDocument()
+      expect(nextLink).toBeInTheDocument()
     })
   })
 

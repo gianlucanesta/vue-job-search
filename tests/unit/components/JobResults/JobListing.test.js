@@ -28,13 +28,13 @@ describe('JobListing', () => {
   it('renders job title', () => {
     const jobProps = createJobProps({ title: 'Vue Developer' })
     renderJobListing(jobProps)
-    // expect(screen.getByText("Vue Developer")).toBeInTheDocument()
+    expect(screen.getByText('Vue Developer')).toBeInTheDocument()
   })
 
   it('renders job organization', () => {
     const jobProps = createJobProps({ organization: 'AirBnb' })
     renderJobListing(jobProps)
-    // expect(screen.getByText("AirBnb")).toBeInTheDocument()
+    expect(screen.getByText('AirBnb')).toBeInTheDocument()
   })
 
   it('renders job locations', () => {
@@ -45,7 +45,7 @@ describe('JobListing', () => {
       ]
     })
     renderJobListing(jobProps)
-    // expect(screen.getByText("New York, USA")).toBeInTheDocument()
+    // expect(screen.getByText('New York, USA')).toBeInTheDocument()
   })
 
   it('renders job qualifications', () => {
