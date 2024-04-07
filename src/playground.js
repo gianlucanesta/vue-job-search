@@ -52,3 +52,14 @@ const fetchJobsV2 = async () => {
 const sushi = ['Tuna', 'Salmon', 'Yellowtail', 'Eel', 'Shrimp', 'Octopus', 'Uni']
 
 console.log(sushi.slice(2, 4))
+
+const numbers = new Set()
+numbers.add(5)
+numbers.add(10)
+numbers.add(15)
+
+numbers.add(5)
+numbers.add(15)
+numbers.add(25)
+
+console.log(numbers)
