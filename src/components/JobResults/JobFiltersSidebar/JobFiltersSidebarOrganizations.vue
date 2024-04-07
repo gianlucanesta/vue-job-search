@@ -29,11 +29,16 @@
 </template>
 
 <script>
+import { mapState } from 'pinia'
+import { useJobsStore, UNIQUE_ORGANIZATIONS } from '@/stores/jobs'
 import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
 export default {
   name: 'JobFiltersSidebarOrganizations',
   components: {
     CollapsibleAccordion
+  },
+  computed: {
+    ...mapState(useJobsStore, [UNIQUE_ORGANIZATIONS])
   }
 }
 </script>
