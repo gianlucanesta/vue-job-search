@@ -7,17 +7,25 @@ import SpotLight from '@/components/JobSearch/SpotLight.vue'
 vi.mock('axios')
 
 describe('SpotLight', () => {
-  it('provides image to parent component', async () => {
+  const mockSpotlightsResponse = (spotlight = {}) => {
     axios.get.mockResolvedValue({
       data: [
         {
           id: 1,
           img: 'Some image',
           title: 'Some title',
-          description: 'Some description'
+          description: 'Some description',
+          ...spotlight
         }
       ]
     })
+  }
+  it('provides image to parent component', async () => {
+    const spotlight = {
+      img: 'Other image'
+    }
+    mockSpotlightsResponse(spotlight)
+
     render(SpotLight, {
       slots: {
         default: `<template #default="slotProps">
@@ -26,23 +34,16 @@ describe('SpotLight', () => {
       }
     })
 
-    const text = await screen.findByText('Some image')
+    const text = await screen.findByText('Other image')
     expect(text).toBeInTheDocument()
   })
-})
 
-describe('SpotLight', () => {
   it('provides title to parent component', async () => {
-    axios.get.mockResolvedValue({
-      data: [
-        {
-          id: 1,
-          img: 'Some image',
-          title: 'Some title',
-          description: 'Some description'
-        }
-      ]
-    })
+    const spotlight = {
+      title: 'Other title'
+    }
+    mockSpotlightsResponse(spotlight)
+
     render(SpotLight, {
       slots: {
         default: `<template #default="slotProps">
@@ -51,23 +52,15 @@ describe('SpotLight', () => {
       }
     })
 
-    const text = await screen.findByText('Some title')
+    const text = await screen.findByText('Other title')
     expect(text).toBeInTheDocument()
   })
-})
 
-describe('SpotLight', () => {
   it('provides description to parent component', async () => {
-    axios.get.mockResolvedValue({
-      data: [
-        {
-          id: 1,
-          img: 'Some image',
-          title: 'Some title',
-          description: 'Some description'
-        }
-      ]
-    })
+    const spotlight = {
+      description: 'Other description'
+    }
+    mockSpotlightsResponse(spotlight)
     render(SpotLight, {
       slots: {
         default: `<template #default="slotProps">
@@ -76,7 +69,7 @@ describe('SpotLight', () => {
       }
     })
 
-    const text = await screen.findByText('Some description')
+    const text = await screen.findByText('Other description')
     expect(text).toBeInTheDocument()
   })
 })
