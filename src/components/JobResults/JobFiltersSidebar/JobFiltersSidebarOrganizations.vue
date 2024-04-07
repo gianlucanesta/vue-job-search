@@ -10,6 +10,7 @@
               :value="organization"
               type="checkbox"
               class="mr-3 cursor-pointer"
+              @change="selectOrganization"
             />
             <label :for="organization">{{ organization }}</label>
           </li>
@@ -35,6 +36,11 @@ export default {
   },
   computed: {
     ...mapState(useJobsStore, [UNIQUE_ORGANIZATIONS])
+  },
+  methods: {
+    selectOrganization() {
+      console.log(this.selectedOrganizations)
+    }
   }
 }
 </script>
