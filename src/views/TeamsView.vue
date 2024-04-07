@@ -1,6 +1,6 @@
 <template>
   <header-container>
-    <template v-slot:default>
+    <template v-slot:title>
       <h1 class="w-full text-4xl font-normal">Teams</h1>
     </template>
     <template v-slot:subtitle>
