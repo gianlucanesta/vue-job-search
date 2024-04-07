@@ -7,7 +7,10 @@
           <action-button text="Clear Filters" type="secondary" />
         </div>
       </div>
-      <collapsible-accordion>
+      <collapsible-accordion header="Job Types">
+        <p>Placeholder for now</p>
+      </collapsible-accordion>
+      <collapsible-accordion header="Organizations">
         <div class="mt-5">
           <fieldset>
             <ul class="flex flex-row flex-wrap">

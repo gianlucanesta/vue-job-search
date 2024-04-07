@@ -1,7 +1,7 @@
 <template>
   <div class="border-b border-solid border-brand-gray-1 py-5">
     <div class="flex flex-wrap items-center justify-between cursor-pointer" @click="open">
-      <h3 class="text-base font-semibold">Organizations</h3>
+      <h3 class="text-base font-semibold">{{ header }}</h3>
 
       <font-awesome-icon :icon="caretIcon" />
     </div>
@@ -18,6 +18,12 @@ export default {
   data() {
     return {
       isOpen: false
+    }
+  },
+  props: {
+    header: {
+      type: String,
+      required: true
     }
   },
   methods: {
