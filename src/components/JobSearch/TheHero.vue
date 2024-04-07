@@ -16,21 +16,24 @@
     </section>
 
     <spot-light class="flex flex-row justify-center pb-16">
-      <template v-slot:default="slotProps">
+      <template #default="slotProps">
         <router-link
           to="/jobs/results"
-          class="mx-5 flex h-96 w-72 flex-col rounded-lg border bg-brand-gray-2"
+          class="mx-5 flex h-[268px] w-[530px] flex-col rounded-lg border bg-brand-gray-2"
         >
-          <img :src="slotProps.spotlight.img" class="object-contain" />
+          <div
+            :style="{ 'background-image': 'url(' + slotProps.spotlight.img + ')' }"
+            class="flex h-full flex-col justify-end bg-cover"
+          ></div>
 
-          <div class="mt-3 h-48 px-6 py-4">
-            <h3 class="text-lg font-medium">
-              {{ slotProps.spotlight.title }}
-            </h3>
-            <p class="mt-3 text-sm">
-              {{ slotProps.spotlight.description }}
-            </p>
+          <div class="text-black">
+            <div class="px-6 py-4">
+              <h3 class="text-xl">{{ slotProps.spotlight.title }}</h3>
+
+              <p class="pt-4">{{ slotProps.spotlight.description }}</p>
+            </div>
           </div>
+
           <router-link to="/jobs/results" class="px-6 pb-4 text-sm text-brand-blue-1"
             >See jobs</router-link
           >
