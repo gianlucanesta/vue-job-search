@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia'
 
+export const ADD_SELECTED_ORGANIZATIONS = 'ADD_SELECTED_ORGANIZATIONS'
+
 export const useUserStore = defineStore('user', {
   state: () => ({
     isLoggedIn: false,
@@ -11,6 +13,9 @@ export const useUserStore = defineStore('user', {
     },
     logoutUser() {
       this.isLoggedIn = false
+    },
+    [ADD_SELECTED_ORGANIZATIONS](organizations) {
+      this.selectedOrganizations = organizations
     }
   }
 })
