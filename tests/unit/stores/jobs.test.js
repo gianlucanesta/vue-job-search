@@ -79,24 +79,62 @@ describe('getters', () => {
     })
   })
 
-  describe('When the user has not selected any organizations', () => {
-    it('return all jobs', () => {
+  describe('FILTERED_JOBS_BY_JOB_TYPES', () => {
+    it('identifies jobs that are associated with the given job types', () => {
       const jobsStore = useJobsStore()
       jobsStore.jobs = [
-        { organization: 'Google' },
-        { organization: 'Amazon' },
-        { organization: 'Microsoft' }
+        { jobType: 'Full-time' },
+        { jobType: 'Temporary' },
+        { jobType: 'Part-time' }
       ]
       const userStore = useUserStore()
-      userStore.selectedOrganizations = []
+      userStore.selectedJobTypes = ['Full-time', 'Part-time']
 
-      const result = jobsStore.FILTERED_JOBS_BY_ORGANIZATION
+      const result = jobsStore.FILTERED_JOBS_BY_JOB_TYPES
 
-      expect(result).toEqual([
-        { organization: 'Google' },
-        { organization: 'Amazon' },
-        { organization: 'Microsoft' }
-      ])
+      expect(result).toEqual([{ jobType: 'Full-time' }, { jobType: 'Part-time' }])
+    })
+
+    describe('When the user has not selected any job types', () => {
+      it('return all jobs', () => {
+        const jobsStore = useJobsStore()
+        jobsStore.jobs = [
+          { jobType: 'Full-time' },
+          { jobType: 'Temporary' },
+          { jobType: 'Part-time' }
+        ]
+        const userStore = useUserStore()
+        userStore.selectedJobTypes = []
+
+        const result = jobsStore.FILTERED_JOBS_BY_JOB_TYPES
+
+        expect(result).toEqual([
+          { jobType: 'Full-time' },
+          { jobType: 'Temporary' },
+          { jobType: 'Part-time' }
+        ])
+      })
+    })
+
+    describe('When the user has not selected any organizations', () => {
+      it('return all jobs', () => {
+        const jobsStore = useJobsStore()
+        jobsStore.jobs = [
+          { organization: 'Google' },
+          { organization: 'Amazon' },
+          { organization: 'Microsoft' }
+        ]
+        const userStore = useUserStore()
+        userStore.selectedOrganizations = []
+
+        const result = jobsStore.FILTERED_JOBS_BY_ORGANIZATION
+
+        expect(result).toEqual([
+          { organization: 'Google' },
+          { organization: 'Amazon' },
+          { organization: 'Microsoft' }
+        ])
+      })
     })
   })
 })
