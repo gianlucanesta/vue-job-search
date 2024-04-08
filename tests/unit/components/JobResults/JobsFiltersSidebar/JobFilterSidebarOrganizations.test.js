@@ -6,10 +6,10 @@ import { useJobsStore } from '@/stores/jobs'
 import { useUserStore } from '@/stores/user'
 
 describe('JobFilterSidebarOrganizations', () => {
-  it('renders unique list of organizations from jobs', async () => {
+  const renderJobFiltersSidebarOrganizations = () => {
     const pinia = createTestingPinia()
     const jobsStore = useJobsStore()
-    jobsStore.UNIQUE_ORGANIZATIONS = new Set(['Google', 'Amazon'])
+    const userStore = useUserStore()
 
     render(JobFiltersSidebarOrganizations, {
       global: {
@@ -19,6 +19,13 @@ describe('JobFilterSidebarOrganizations', () => {
         FontAwesomeIcon: true
       }
     })
+    return { jobsStore, userStore }
+  }
+
+  it('renders unique list of organizations from jobs', async () => {
+    const { jobsStore } = renderJobFiltersSidebarOrganizations()
+
+    jobsStore.UNIQUE_ORGANIZATIONS = new Set(['Google', 'Amazon'])
 
     const button = screen.getByRole('button', {
       name: /organizations/i
@@ -30,18 +37,9 @@ describe('JobFilterSidebarOrganizations', () => {
   })
 
   it('communicates that user has selected checkbox for organization', async () => {
-    const pinia = createTestingPinia()
-    const userStore = useUserStore()
-    const jobsStore = useJobsStore()
+    const { jobsStore, userStore } = renderJobFiltersSidebarOrganizations()
     jobsStore.UNIQUE_ORGANIZATIONS = new Set(['Google', 'Amazon'])
-    render(JobFiltersSidebarOrganizations, {
-      global: {
-        plugins: [pinia]
-      },
-      stubs: {
-        FontAwesomeIcon: true
-      }
-    })
+
     const button = screen.getByRole('button', {
       name: /organizations/i
     })
