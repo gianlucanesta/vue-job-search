@@ -51,6 +51,17 @@ describe('getters', () => {
     })
   })
 
+  describe('UNIQUE_JOB_TYPES', () => {
+    it('finds unique job types from list of jobs', () => {
+      const store = useJobsStore()
+      store.jobs = [{ jobType: 'Full-time' }, { jobType: 'Part-time' }, { jobType: 'Full-time' }]
+
+      const result = store.UNIQUE_JOB_TYPES
+
+      expect(result).toEqual(new Set(['Full-time', 'Part-time']))
+    })
+  })
+
   describe('FILTERED_JOBS_BY_ORGANIZATION', () => {
     it('identifies jobs that are associated with the given organizations', () => {
       const jobsStore = useJobsStore()
@@ -68,7 +79,7 @@ describe('getters', () => {
     })
   })
 
-  describe('Fwhen the user has not selected any organizations', () => {
+  describe('When the user has not selected any organizations', () => {
     it('return all jobs', () => {
       const jobsStore = useJobsStore()
       jobsStore.jobs = [
