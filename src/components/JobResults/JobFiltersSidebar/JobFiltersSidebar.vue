@@ -8,9 +8,8 @@
         </div>
       </div>
       <collapsible-accordion header="Degree" />
-      <collapsible-accordion header="Job Types">
-        <p>Placeholder for now</p>
-      </collapsible-accordion>
+
+      <job-filters-sidebar-job-types />
       <job-filters-sidebar-organizations />
     </section>
   </div>
@@ -20,13 +19,15 @@
 import ActionButton from '@/components/Shared/ActionButton.vue'
 import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
 import JobFiltersSidebarOrganizations from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarOrganizations.vue'
+import JobFiltersSidebarJobTypes from './JobFiltersSidebarJobTypes.vue'
 
 export default {
   name: 'JobFiltersSidebar',
   components: {
     ActionButton,
     CollapsibleAccordion,
-    JobFiltersSidebarOrganizations
+    JobFiltersSidebarOrganizations,
+    JobFiltersSidebarJobTypes
   }
 }
 </script>
