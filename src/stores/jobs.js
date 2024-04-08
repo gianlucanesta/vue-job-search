@@ -5,7 +5,7 @@ import { useUserStore } from './user'
 export const FETCH_JOBS = 'FETCH_JOBS'
 export const UNIQUE_ORGANIZATIONS = 'UNIQUE_ORGANIZATIONS'
 export const UNIQUE_JOB_TYPES = 'UNIQUE_JOB_TYPES'
-export const FILTEREDS_JOBS = 'FILTEREDS_JOBS'
+export const FILTERED_JOBS = 'FILTEREDS_JOBS'
 
 export const FILTERED_JOBS_BY_ORGANIZATION = 'FILTERED_JOBS_BY_ORGANIZATION'
 export const FILTERED_JOBS_BY_JOB_TYPES = 'FILTERED_JOBS_BY_JOB_TYPES'
@@ -53,20 +53,20 @@ export const useJobsStore = defineStore('jobs', {
 
       return state.jobs.filter((job) => userStore.selectedJobTypes.includes(job.jobType))
     },
-    [FILTEREDS_JOBS](state) {
+    [FILTERED_JOBS](state) {
       const userStore = useUserStore()
 
       const noSelectedOrganizations = userStore.selectedOrganizations.length === 0
       const noSelectedJobTypes = userStore.selectedJobTypes.length === 0
 
-      if (noSelectedOrganizations && noSelectedJobTypes) return state.jobs
-
       return state.jobs
         .filter((job) => {
-          userStore.selectedOrganizations.includes(job.organization)
+          if (noSelectedOrganizations) return true
+          return userStore.selectedOrganizations.includes(job.organization)
         })
         .filter((job) => {
-          userStore.selectedJobTypes.includes(job.jobType)
+          if (noSelectedJobTypes) return true
+          return userStore.selectedJobTypes.includes(job.jobType)
         })
     }
   }
