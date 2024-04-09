@@ -24,13 +24,17 @@ export default {
   name: 'CollapsibleAccordion',
   setup() {
     const header = ref('Cool Title')
+    const isOpen = ref(false)
 
     const open = () => {
-      header.value = 'Cooler Title'
-      // this.isOpen = !this.isOpen
+      isOpen.value = !isOpen.value
     }
 
-    return { header, open }
+    // const caretIcon = () => {
+    //   return isOpen.value ? ['fas', 'angle-up'] : ['fas', 'angle-down']
+    // }
+
+    return { header, isOpen, open }
   }
   // data() {
   //   return {
