@@ -63,3 +63,12 @@ numbers.add(15)
 numbers.add(25)
 
 console.log(numbers)
+
+let a = 1
+let b = 2
+let c = a + b
+console.log('c', c)
+
+a = 8
+
+console.log('c', c)
