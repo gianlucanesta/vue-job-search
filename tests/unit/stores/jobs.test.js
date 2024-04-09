@@ -62,6 +62,58 @@ describe('getters', () => {
     })
   })
 
+  describe('INCLUDE_JOB_BY_ORGANIZATION', () => {
+    describe('When the user has not selected any organizations', () => {
+      it('includes job', () => {
+        const userStore = useUserStore()
+        userStore.selectedOrganizations = []
+
+        const store = useJobsStore()
+        const job = { organization: 'Google' }
+        const result = store.INCLUDE_JOB_BY_ORGANIZATION(job)
+
+        expect(result).toBe(true)
+      })
+    })
+
+    it('identifies if job is associated with given organizations', () => {
+      const userStore = useUserStore()
+      userStore.selectedOrganizations = ['Google', 'Microsoft']
+
+      const store = useJobsStore()
+      const job = { organization: 'Google' }
+      const result = store.INCLUDE_JOB_BY_ORGANIZATION(job)
+
+      expect(result).toBe(true)
+    })
+  })
+
+  describe('INCLUDE_JOB_BY_JOB_TYPE', () => {
+    describe('When the user has not selected any job types', () => {
+      it('includes job', () => {
+        const userStore = useUserStore()
+        userStore.selectedJobTypes = []
+
+        const store = useJobsStore()
+        const job = { jobType: 'Full-time' }
+        const result = store.INCLUDE_JOB_BY_JOB_TYPE(job)
+
+        expect(result).toBe(true)
+      })
+    })
+
+    it('identifies if job is associated with given job types', () => {
+      const userStore = useUserStore()
+      userStore.selectedJobTypes = ['Full-time', 'Part-time']
+
+      const store = useJobsStore()
+      const job = { jobType: 'Part-time' }
+      const result = store.INCLUDE_JOB_BY_JOB_TYPE(job)
+
+      expect(result).toBe(true)
+    })
+  })
+
   describe('FILTERED_JOBS_BY_ORGANIZATION', () => {
     it('identifies jobs that are associated with the given organizations', () => {
       const jobsStore = useJobsStore()
