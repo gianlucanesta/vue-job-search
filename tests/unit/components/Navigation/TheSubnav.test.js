@@ -8,11 +8,14 @@ describe('TheSubnav', () => {
   const renderTheSubnav = (routeName) => {
     const pinia = createTestingPinia()
     const jobsStore = useJobsStore()
+
     render(TheSubnav, {
       global: {
         plugins: [pinia],
         mocks: {
-          $route: { name: routeName }
+          $route: {
+            name: routeName
+          }
         },
         stubs: {
           FontAwesomeIcon: true
@@ -23,30 +26,28 @@ describe('TheSubnav', () => {
     return { jobsStore }
   }
 
-  describe("when the user is on the 'Jobs' page", () => {
-    it('displays jobs count', async () => {
+  describe('when user is on jobs page', () => {
+    it('displays job count', async () => {
       const routeName = 'JobResults'
+
       const { jobsStore } = renderTheSubnav(routeName)
       const numberOfJobs = 16
-      jobsStore.FILTERED_JOBS_BY_ORGANIZATION = Array(numberOfJobs).fill({})
+      jobsStore.FILTERED_JOBS = Array(numberOfJobs).fill({})
 
       const jobCount = await screen.findByText(numberOfJobs)
-
       expect(jobCount).toBeInTheDocument()
     })
   })
 
-  describe("when the user is not on the 'Jobs' page", () => {
-    it('does NOT displays jobs count', async () => {
+  describe('when user is not on jobs page', () => {
+    it('does NOT display job count', () => {
       const routeName = 'Home'
+
       const { jobsStore } = renderTheSubnav(routeName)
       const numberOfJobs = 16
-      jobsStore.FILTERED_JOBS_BY_ORGANIZATION = Array(numberOfJobs).fill({})
+      jobsStore.FILTERED_JOBS = Array(numberOfJobs).fill({})
 
-      renderTheSubnav(routeName)
-
-      const jobCount = await screen.queryByText(numberOfJobs)
-
+      const jobCount = screen.queryByText(numberOfJobs)
       expect(jobCount).not.toBeInTheDocument()
     })
   })
