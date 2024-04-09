@@ -64,7 +64,7 @@ numbers.add(25)
 
 console.log(numbers)
 
-const { ref, computed } = require('vue')
+const { ref, computed, reactive } = require('vue')
 
 let a = ref(1)
 let b = ref(2)
@@ -76,24 +76,36 @@ a.value = 8
 
 console.log('c', c.value)
 
-const name = ref('Gianluca')
+const name = ref('Boris')
 
 const title = computed(() => name.value + ' - the Great')
 
 console.log('title: ', title.value)
 
-name.value = 'Marco'
+name.value = 'Alex'
 
 console.log('title: ', title.value)
 
 const person = ref({
-  name: 'Gianluca'
+  name: 'Boris'
 })
 
 const title2 = computed(() => person.value.name + ' - the Best')
 
 console.log('title2: ', title2.value)
 
-person.value.name = 'Marco'
+person.value.name = 'Alex'
 
 console.log('title2: ', title2.value)
+
+const person2 = reactive({
+  name: 'Boris'
+})
+
+const title3 = computed(() => person2.name + ' - the Top')
+
+console.log('title3: ', title3.value)
+
+person2.name = 'Alex'
+
+console.log('title3: ', title3.value)
