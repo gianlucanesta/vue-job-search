@@ -22,8 +22,13 @@
 import { computed, ref } from 'vue'
 export default {
   name: 'CollapsibleAccordion',
+  props: {
+    header: {
+      type: String,
+      required: true
+    }
+  },
   setup() {
-    const header = ref('Cool Title')
     const isOpen = ref(false)
 
     const open = () => {
@@ -34,28 +39,7 @@ export default {
       return isOpen.value ? ['fas', 'angle-up'] : ['fas', 'angle-down']
     })
 
-    return { header, isOpen, open, caretIcon }
+    return { isOpen, open, caretIcon }
   }
-  // data() {
-  //   return {
-  //     isOpen: false
-  //   }
-  // },
-  // props: {
-  //   header: {
-  //     type: String,
-  //     required: true
-  //   }
-  // },
-  // methods: {
-  //   open() {
-  //     this.isOpen = !this.isOpen
-  //   }
-  // },
-  // computed: {
-  //   caretIcon() {
-  //     return this.isOpen ? ['fas', 'angle-up'] : ['fas', 'angle-down']
-  //   }
-  // }
 }
 </script>
