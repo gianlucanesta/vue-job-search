@@ -19,11 +19,18 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 export default {
   name: 'CollapsibleAccordion',
   setup() {
-    const header = 'Cool Title'
-    return { header }
+    const header = ref('Cool Title')
+
+    const open = () => {
+      header.value = 'Cooler Title'
+      // this.isOpen = !this.isOpen
+    }
+
+    return { header, open }
   }
   // data() {
   //   return {
