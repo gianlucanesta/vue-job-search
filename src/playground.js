@@ -138,3 +138,16 @@ person3.lastName = 'Smith'
 
 console.log(fullName.value)
 console.log(fullNameLength.value)
+
+const { firstName, lastName } = person3
+
+const fullName2 = computed(() => {
+  return `${firstName} ${lastName} - the King`
+})
+
+console.log(fullName2.value)
+
+person3.firstName = 'Alex'
+person3.lastName = 'Garcia'
+
+console.log(fullName2.value)
