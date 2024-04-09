@@ -75,3 +75,13 @@ console.log('c', c.value)
 a.value = 8
 
 console.log('c', c.value)
+
+const name = ref('Gianluca')
+
+const title = computed(() => name.value + ' - the Great')
+
+console.log('title: ', title.value)
+
+name.value = 'Marco'
+
+console.log('title: ', title.value)
