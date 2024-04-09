@@ -126,3 +126,15 @@ person3.firstName = 'Alex'
 person3.lastName = 'Garcia'
 
 console.log(fullName.value)
+
+const fullNameLength = computed(() => {
+  return fullName.value.length
+})
+
+console.log(fullNameLength.value)
+
+person3.firstName = 'Robert'
+person3.lastName = 'Smith'
+
+console.log(fullName.value)
+console.log(fullNameLength.value)
