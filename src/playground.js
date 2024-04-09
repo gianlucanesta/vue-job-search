@@ -65,7 +65,7 @@ numbers.add(25)
 
 console.log(numbers)
 
-const { ref, computed, reactive } = require('vue')
+const { ref, computed, reactive, toRef } = require('vue')
 
 let a = ref(1)
 let b = ref(2)
@@ -151,3 +151,17 @@ person3.firstName = 'Alex'
 person3.lastName = 'Garcia'
 
 console.log(fullName2.value)
+
+const firstName2 = toRef(person3, 'firstName')
+const lastName2 = toRef(person3, 'lastName')
+
+const fullName3 = computed(() => {
+  return `${firstName2.value} ${lastName2.value} - the King`
+})
+
+console.log(fullName3.value)
+
+person3.firstName = 'Frank'
+person3.lastName = 'Jones'
+
+console.log(fullName3.value)
