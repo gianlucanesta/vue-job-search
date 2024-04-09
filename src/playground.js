@@ -64,11 +64,14 @@ numbers.add(25)
 
 console.log(numbers)
 
-let a = 1
-let b = 2
-let c = a + b
-console.log('c', c)
+const { ref } = require('vue')
 
-a = 8
+let a = ref(1)
+let b = ref(2)
+
+const c = ref(a.value + b.value)
+console.log('c', c.value)
+
+a.value = 10
 
 console.log('c', c)
