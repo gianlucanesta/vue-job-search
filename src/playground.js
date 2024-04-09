@@ -85,3 +85,15 @@ console.log('title: ', title.value)
 name.value = 'Marco'
 
 console.log('title: ', title.value)
+
+const person = ref({
+  name: 'Gianluca'
+})
+
+const title2 = computed(() => person.value.name + ' - the Best')
+
+console.log('title2: ', title2.value)
+
+person.value.name = 'Marco'
+
+console.log('title2: ', title2.value)
