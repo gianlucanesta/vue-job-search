@@ -182,3 +182,12 @@ console.log(fullName4.value)
 const refPerson = toRefs(person3)
 
 console.log(refPerson.firstName.value)
+
+const person4 = {
+  firstName: 'Boris',
+  lastName: 'Perez'
+}
+
+const refPerson2 = toRefs(reactive(person4))
+
+console.log(refPerson2.firstName.value)
