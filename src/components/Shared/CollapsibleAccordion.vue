@@ -21,26 +21,30 @@
 <script>
 export default {
   name: 'CollapsibleAccordion',
-  data() {
-    return {
-      isOpen: false
-    }
-  },
-  props: {
-    header: {
-      type: String,
-      required: true
-    }
-  },
-  methods: {
-    open() {
-      this.isOpen = !this.isOpen
-    }
-  },
-  computed: {
-    caretIcon() {
-      return this.isOpen ? ['fas', 'angle-up'] : ['fas', 'angle-down']
-    }
+  setup() {
+    const header = 'Cool Title'
+    return { header }
   }
+  // data() {
+  //   return {
+  //     isOpen: false
+  //   }
+  // },
+  // props: {
+  //   header: {
+  //     type: String,
+  //     required: true
+  //   }
+  // },
+  // methods: {
+  //   open() {
+  //     this.isOpen = !this.isOpen
+  //   }
+  // },
+  // computed: {
+  //   caretIcon() {
+  //     return this.isOpen ? ['fas', 'angle-up'] : ['fas', 'angle-down']
+  //   }
+  // }
 }
 </script>
