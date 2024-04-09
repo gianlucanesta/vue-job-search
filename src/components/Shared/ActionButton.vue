@@ -5,10 +5,10 @@
 </template>
 
 <script>
+import { computed } from 'vue'
+
 export default {
   name: 'ActionButton',
-
-  methods: {},
   props: {
     text: {
       type: String,
@@ -23,12 +23,13 @@ export default {
       }
     }
   },
-  computed: {
-    buttonClass() {
+  setup(props) {
+    const buttonClass = computed(() => {
       return {
-        [this.type]: true
+        [props.type]: true
       }
-    }
+    })
+    return { buttonClass }
   }
 }
 </script>
