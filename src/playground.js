@@ -33,6 +33,7 @@ setTimeout(() => {
   clearInterval(interval)
 }, 10000)
 
+const { faColumns } = require('@fortawesome/free-solid-svg-icons')
 const axios = require('axios')
 const url = 'http://localhost:5000/jobs'
 
@@ -109,3 +110,19 @@ console.log('title3: ', title3.value)
 person2.name = 'Alex'
 
 console.log('title3: ', title3.value)
+
+const person3 = reactive({
+  firstName: 'Boris',
+  lastName: 'Perez'
+})
+
+const fullName = computed(() => {
+  return `${person3.firstName} ${person3.lastName} - the King`
+})
+
+console.log(fullName.value)
+
+person3.firstName = 'Alex'
+person3.lastName = 'Garcia'
+
+console.log(fullName.value)
