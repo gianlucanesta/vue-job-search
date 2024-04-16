@@ -2,14 +2,14 @@
   <collapsible-accordion :header="header">
     <div class="mt-5">
       <fieldset>
-        <ul class="flex flex-col columns-12">
-          <li v-for="value in unicValues" :key="value" class="h-8 w-full">
+        <ul class="flex flex-row flex-wrap">
+          <li v-for="value in uniqueValues" :key="value" class="h-8 w-1/2">
             <input
               :id="value"
-              v-model="selectValues"
+              v-model="selectedValues"
               :value="value"
               type="checkbox"
-              class="mr-3 cursor-pointer"
+              class="mr-3"
               @change="selectValue"
             />
             <label :for="value">{{ value }}</label>
@@ -23,6 +23,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+
 import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
 
 const props = defineProps({
@@ -30,7 +31,7 @@ const props = defineProps({
     type: String,
     required: true
   },
-  unicValues: {
+  uniqueValues: {
     type: Set,
     required: true
   },
@@ -41,8 +42,8 @@ const props = defineProps({
 })
 
 const selectedValues = ref([])
-
 const router = useRouter()
+
 const selectValue = () => {
   props.action(selectedValues.value)
   router.push({ name: 'JobResults' })
