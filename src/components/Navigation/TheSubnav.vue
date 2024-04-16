@@ -12,15 +12,21 @@
 </template>
 
 <script>
-import { mapState } from 'pinia'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 import { useJobsStore, FILTERED_JOBS } from '@/stores/jobs'
-export default {
-  name: 'TheSubnav',
-  computed: {
-    ...mapState(useJobsStore, [FILTERED_JOBS]),
-    onJobResultsPage() {
-      return this.$route.name === 'JobResults'
-    }
-  }
-}
+import { faRoute } from '@fortawesome/free-solid-svg-icons'
+
+const onJobResultsPage = computed(() => {
+  route.name === 'JobResults'
+})
+// export default {
+//   name: 'TheSubnav',
+//   computed: {
+//     ...mapState(useJobsStore, [FILTERED_JOBS]),
+//     onJobResultsPage() {
+//       return this.$route.name === 'JobResults'
+//     }
+//   }
+// }
 </script>
