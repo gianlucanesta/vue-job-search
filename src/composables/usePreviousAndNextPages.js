@@ -11,7 +11,6 @@ const usePreviousAndNextPages = (currentPage, maxPage) => {
 
   const nextPage = computed(() => {
     const nextPage = currentPage.value + 1
-    const maxPage = Math.ceil(FILTERED_JOBS.value.length / 10)
     return currentPage.value < maxPage.value ? nextPage : undefined
   })
 
