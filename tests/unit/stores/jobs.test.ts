@@ -2,6 +2,8 @@ import type { Mock } from 'vitest'
 import { createPinia, setActivePinia } from 'pinia'
 import axios from 'axios'
 
+import type { Job } from '@/api/types'
+
 import { useJobsStore } from '@/stores/jobs'
 import { useUserStore } from '@/stores/user'
 
@@ -45,7 +47,7 @@ describe('getters', () => {
         { organization: 'Google' },
         { organization: 'Amazon' },
         { organization: 'Google' }
-      ]
+      ] as Job[]
 
       const result = store.UNIQUE_ORGANIZATIONS
 
@@ -56,7 +58,11 @@ describe('getters', () => {
   describe('UNIQUE_JOB_TYPES', () => {
     it('finds unique job types from list of jobs', () => {
       const store = useJobsStore()
-      store.jobs = [{ jobType: 'Full-time' }, { jobType: 'Part-time' }, { jobType: 'Full-time' }]
+      store.jobs = [
+        { jobType: 'Full-time' },
+        { jobType: 'Part-time' },
+        { jobType: 'Full-time' }
+      ] as Job[]
 
       const result = store.UNIQUE_JOB_TYPES
 
@@ -71,7 +77,7 @@ describe('getters', () => {
         userStore.selectedOrganizations = []
 
         const store = useJobsStore()
-        const job = { organization: 'Google' }
+        const job = { organization: 'Google' } as Job
         const result = store.INCLUDE_JOB_BY_ORGANIZATION(job)
 
         expect(result).toBe(true)
@@ -83,7 +89,7 @@ describe('getters', () => {
       userStore.selectedOrganizations = ['Google', 'Microsoft']
 
       const store = useJobsStore()
-      const job = { organization: 'Google' }
+      const job = { organization: 'Google' } as Job
       const result = store.INCLUDE_JOB_BY_ORGANIZATION(job)
 
       expect(result).toBe(true)
@@ -97,7 +103,7 @@ describe('getters', () => {
         userStore.selectedJobTypes = []
 
         const store = useJobsStore()
-        const job = { jobType: 'Full-time' }
+        const job = { jobType: 'Full-time' } as Job
         const result = store.INCLUDE_JOB_BY_JOB_TYPE(job)
 
         expect(result).toBe(true)
@@ -109,7 +115,7 @@ describe('getters', () => {
       userStore.selectedJobTypes = ['Full-time', 'Part-time']
 
       const store = useJobsStore()
-      const job = { jobType: 'Part-time' }
+      const job = { jobType: 'Part-time' } as Job
       const result = store.INCLUDE_JOB_BY_JOB_TYPE(job)
 
       expect(result).toBe(true)
