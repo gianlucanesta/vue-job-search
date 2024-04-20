@@ -1,3 +1,4 @@
+import type { Mock } from 'vitest'
 import { createPinia, setActivePinia } from 'pinia'
 import axios from 'axios'
 
@@ -5,6 +6,7 @@ import { useJobsStore } from '@/stores/jobs'
 import { useUserStore } from '@/stores/user'
 
 vi.mock('axios')
+const axiosGetMock = axios.get as Mock
 
 describe('state', () => {
   beforeEach(() => {
@@ -22,7 +24,7 @@ describe('actions', () => {
   })
   describe('FETCH_JOBS', () => {
     it('makes API request and stores received jobs', async () => {
-      axios.get.mockResolvedValue({
+      axiosGetMock.mockResolvedValue({
         data: ['Job 1', 'Job 2']
       })
       const store = useJobsStore()
