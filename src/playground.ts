@@ -38,7 +38,7 @@ const axios = require('axios')
 const url = 'http://localhost:5000/jobs'
 
 const fetchJobsV1 = () => {
-  axios.get(url).then((response) => {
+  axios.get(url).then((response: any) => {
     console.log('🚀 ~ file: playground.js:39 ~ response.data', response.data)
   })
 }
@@ -191,3 +191,20 @@ const person4 = {
 const refPerson2 = toRefs(reactive(person4))
 
 console.log(refPerson2.firstName.value)
+
+import type { Job } from '@/api/types'
+
+const state1: Partial<Job> = {}
+
+const state2: Partial<Job> = {
+  organization: 'AirBnb'
+}
+
+const state3: Partial<Job> = {
+  organization: 'AirBnb',
+  jobType: 'Full-time'
+}
+
+// const invaildState: Partial <Job> = {
+//   a: 5
+// }
