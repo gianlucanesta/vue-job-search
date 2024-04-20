@@ -39,7 +39,7 @@
     </spot-light>
   </main>
 </template>
-<script>
+<script lang="ts">
 import TheHeadline from '@/components/JobSearch/TheHeadline.vue'
 import JobSearchForm from '@/components/JobSearch/JobSearchForm.vue'
 import SpotLight from './SpotLight.vue'
