@@ -4,7 +4,7 @@ import { RouterLinkStub } from '@vue/test-utils'
 import JobListing from '@/components/JobResults/JobListing.vue'
 
 import type { Job } from '@/api/types'
-import { createJob } from 'tests/utils/createJob'
+import { createJob } from '../../../utils/createJob'
 
 describe('JobListing', () => {
   const createJobProps = (jobProps = {}) => ({
@@ -45,7 +45,8 @@ describe('JobListing', () => {
       locations: ['New York', 'San Francisco']
     })
     renderJobListing(jobProps)
-    expect(screen.getByText('New York, San Francisco')).toBeInTheDocument()
+    expect(screen.getByText('New York')).toBeInTheDocument()
+    expect(screen.getByText('San Francisco')).toBeInTheDocument()
   })
 
   it('renders job qualifications', () => {
@@ -53,6 +54,7 @@ describe('JobListing', () => {
       minimumQualifications: ["Bachelor's Degree", "Master's Degree"]
     })
     renderJobListing(jobProps)
-    expect(screen.getByText("Bachelor's Degree, Master's Degree")).toBeInTheDocument()
+    expect(screen.getByText("Bachelor's Degree")).toBeInTheDocument()
+    expect(screen.getByText("Master's Degree")).toBeInTheDocument()
   })
 })
