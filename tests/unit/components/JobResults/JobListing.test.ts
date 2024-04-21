@@ -3,6 +3,9 @@ import { RouterLinkStub } from '@vue/test-utils'
 
 import JobListing from '@/components/JobResults/JobListing.vue'
 
+import type { Job } from '@/api/types'
+import { createJob } from 'tests/utils/createJob'
+
 describe('JobListing', () => {
   const createJobProps = (jobProps = {}) => ({
     title: 'Vue Developer',
@@ -11,7 +14,7 @@ describe('JobListing', () => {
     minimumQualifications: ["Bachelor's Degree", "Master's Degree"],
     ...jobProps
   })
-  const renderJobListing = (jobProps) => {
+  const renderJobListing = (job: Job) => {
     render(JobListing, {
       global: {
         stubs: {
@@ -20,39 +23,36 @@ describe('JobListing', () => {
       },
       props: {
         job: {
-          ...jobProps
+          ...job
         }
       }
     })
   }
   it('renders job title', () => {
-    const jobProps = createJobProps({ title: 'Vue Developer' })
+    const jobProps = createJob({ title: 'Vue Developer' })
     renderJobListing(jobProps)
     expect(screen.getByText('Vue Developer')).toBeInTheDocument()
   })
 
   it('renders job organization', () => {
-    const jobProps = createJobProps({ organization: 'AirBnb' })
+    const jobProps = createJob({ organization: 'AirBnb' })
     renderJobListing(jobProps)
     expect(screen.getByText('AirBnb')).toBeInTheDocument()
   })
 
   it('renders job locations', () => {
-    const jobProps = createJobProps({
-      locations: [
-        { city: 'New York', country: 'USA' },
-        { city: 'San Francisco', country: 'USA' }
-      ]
+    const jobProps = createJob({
+      locations: ['New York', 'San Francisco']
     })
     renderJobListing(jobProps)
-    // expect(screen.getByText('New York, USA')).toBeInTheDocument()
+    expect(screen.getByText('New York, San Francisco')).toBeInTheDocument()
   })
 
   it('renders job qualifications', () => {
-    const jobProps = createJobProps({
+    const jobProps = createJob({
       minimumQualifications: ["Bachelor's Degree", "Master's Degree"]
     })
     renderJobListing(jobProps)
-    // expect(screen.getByText("Bachelor's Degree, Master's Degree")).toBeInTheDocument()
+    expect(screen.getByText("Bachelor's Degree, Master's Degree")).toBeInTheDocument()
   })
 })
