@@ -30,7 +30,7 @@
   </main>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
@@ -48,7 +48,7 @@ const FILTERED_JOBS = computed(() => {
 
 const route = useRoute()
 const currentPage = computed(() => {
-  return Number.parseInt(route.query.page || 1)
+  return Number.parseInt((route.query.page as string) || '1')
 })
 
 const maxPage = computed(() => Math.ceil(FILTERED_JOBS.value.length / 10))
