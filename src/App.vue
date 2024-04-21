@@ -3,7 +3,7 @@
   <router-view></router-view>
 </template>
 
-<script>
+<script lang="ts">
 import MainNav from '@/components/Navigation/MainNav.vue'
 
 export default {

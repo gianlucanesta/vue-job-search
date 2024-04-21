@@ -8,9 +8,7 @@ import '@/index.css'
 import router from '@/router'
 import App from '@/App.vue'
 
-library.add(faAngleDown)
-library.add(faAngleUp)
-library.add(faSearch)
+library.add(faAngleDown, faAngleUp, faSearch)
 
 const pinia = createPinia()
 
