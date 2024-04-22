@@ -13,47 +13,28 @@
       </div>
 
       <collapsible-accordion header="Degrees">
-        <JobFiltersSidebarCheckboxGroup
-          header="Degrees"
-          :unique-values="UNIQUE_DEGREES"
-          :action="userStore.ADD_SELECTED_DEGREES"
-        />
+        <job-filters-sidebar-degrees />
       </collapsible-accordion>
 
       <collapsible-accordion header="Job Types">
-        <job-filters-sidebar-checkbox-group
-          header="Job Types"
-          :unique-values="UNIQUE_JOB_TYPES"
-          :action="userStore.ADD_SELECTED_JOB_TYPES"
-        />
+        <job-filters-sidebar-job-types />
       </collapsible-accordion>
 
       <collapsible-accordion header="Organizations">
-        <job-filters-sidebar-checkbox-group
-          header="Organizations"
-          :unique-values="UNIQUE_ORGANIZATIONS"
-          :action="userStore.ADD_SELECTED_ORGANIZATIONS"
-        />
+        <job-filters-sidebar-organizations />
       </collapsible-accordion>
     </section>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
-
 import ActionButton from '@/components/Shared/ActionButton.vue'
 import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
-import JobFiltersSidebarCheckboxGroup from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarCheckboxGroup.vue'
+import JobFiltersSidebarDegrees from './JobFiltersSidebarDegrees.vue'
+import JobFiltersSidebarJobTypes from './JobFiltersSidebarJobTypes.vue'
+import JobFiltersSidebarOrganizations from './JobFiltersSidebarOrganizations.vue'
 
-import { useJobsStore } from '@/stores/jobs'
 import { useUserStore } from '@/stores/user'
-import { useDegreesStore } from '@/stores/degrees'
 
-const jobsStore = useJobsStore()
 const userStore = useUserStore()
-const degreesStore = useDegreesStore()
-const UNIQUE_ORGANIZATIONS = computed(() => jobsStore.UNIQUE_ORGANIZATIONS)
-const UNIQUE_JOB_TYPES = computed(() => jobsStore.UNIQUE_JOB_TYPES)
-const UNIQUE_DEGREES = computed(() => degreesStore.UNIQUE_DEGREES)
 </script>
