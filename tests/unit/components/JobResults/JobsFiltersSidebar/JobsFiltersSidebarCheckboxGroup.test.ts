@@ -9,6 +9,7 @@ vi.mock('vue-router')
 const useRouterMock = useRouter as Mock
 
 import JobFiltersSidebarCheckboxGroup from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarCheckboxGroup.vue'
+import { useUserStore } from '@/stores/user'
 
 describe('JobFiltersSidebarCheckboxGroup', () => {
   interface JobFiltersSidebarCheckboxGroupProps {
@@ -21,19 +22,19 @@ describe('JobFiltersSidebarCheckboxGroup', () => {
     ...props
   })
   const renderJobFiltersSidebarCheckboxGroup = (props: JobFiltersSidebarCheckboxGroupProps) => {
-    const pinia = createTestingPinia()
+    const pinia = createTestingPinia({ stubActions: false })
+    const userStore = useUserStore()
 
     render(JobFiltersSidebarCheckboxGroup, {
       props: {
         ...props
       },
       global: {
-        plugins: [pinia],
-        stubs: {
-          FontAwesomeIcon: true
-        }
+        plugins: [pinia]
       }
     })
+
+    return { userStore }
   }
 
   it('renders unique list of values', () => {
@@ -79,6 +80,33 @@ describe('JobFiltersSidebarCheckboxGroup', () => {
       await userEvent.click(fullTimeCheckbox)
 
       expect(push).toHaveBeenCalledWith({ name: 'JobResults' })
+    })
+  })
+
+  describe('when user clears job filters', () => {
+    it('unchecks any checked checkboxes', async () => {
+      const push = vi.fn()
+      useRouterMock.mockReturnValue({ push })
+      const props = createProps({
+        uniqueValues: new Set(['Full-time', 'Part-time'])
+      })
+      const { userStore } = renderJobFiltersSidebarCheckboxGroup(props)
+
+      const fullTimeCheckboxBeforeAction = screen.getByRole<HTMLInputElement>('checkbox', {
+        name: /full-time/i
+      })
+
+      await userEvent.click(fullTimeCheckboxBeforeAction)
+
+      expect(fullTimeCheckboxBeforeAction.checked).toBe(true)
+
+      userStore.CLEAR_USER_JOB_FILTER_SELECTIONS()
+
+      const fullTimeCheckboxAfterAction = await screen.findByRole<HTMLInputElement>('checkbox', {
+        name: /full-time/i
+      })
+
+      expect(fullTimeCheckboxAfterAction.checked).toBe(false)
     })
   })
 })
