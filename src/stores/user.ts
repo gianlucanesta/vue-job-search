@@ -6,13 +6,6 @@ export const ADD_SELECTED_JOB_TYPES = 'ADD_SELECTED_JOB_TYPES'
 export const ADD_SELECTED_DEGREES = 'ADD_SELECTED_DEGREES'
 export const CLEAR_USER_JOB_FILTER_SELECTIONS = 'CLEAR_USER_JOB_FILTER_SELECTIONS'
 
-export interface UserState {
-  isLoggedIn: boolean
-  selectedOrganizations: string[]
-  selectedJobTypes: string[]
-  selectedDegrees: string[]
-}
-
 export const useUserStore = defineStore('user', () => {
   const isLoggedIn = ref(false)
   const selectedOrganizations = ref<string[]>([])
@@ -58,34 +51,3 @@ export const useUserStore = defineStore('user', () => {
     CLEAR_USER_JOB_FILTER_SELECTIONS
   }
 })
-
-// export const useUserStore = defineStore('user', {
-//   state: (): UserState => ({
-//     isLoggedIn: false,
-//     selectedOrganizations: [],
-//     selectedJobTypes: [],
-//     selectedDegrees: []
-//   }),
-//   actions: {
-//     loginUser() {
-//       this.isLoggedIn = true
-//     },
-//     logoutUser() {
-//       this.isLoggedIn = false
-//     },
-//     [ADD_SELECTED_ORGANIZATIONS](organizations: string[]) {
-//       this.selectedOrganizations = organizations
-//     },
-//     [ADD_SELECTED_JOB_TYPES](jobTypes: string[]) {
-//       this.selectedJobTypes = jobTypes
-//     },
-//     [ADD_SELECTED_DEGREES](degrees: string[]) {
-//       this.selectedDegrees = degrees
-//     },
-//     [CLEAR_USER_JOB_FILTER_SELECTIONS]() {
-//       this.selectedOrganizations = []
-//       this.selectedJobTypes = []
-//       this.selectedDegrees = []
-//     }
-//   }
-// })
