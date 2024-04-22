@@ -32,18 +32,18 @@ describe('actions', () => {
     setActivePinia(createPinia())
   })
 
-  describe('loginUser', () => {
+  describe('LOGIN_USER', () => {
     it('logs the user in', () => {
       const store = useUserStore()
-      store.loginUser()
+      store.LOGIN_USER()
       expect(store.isLoggedIn).toBe(true)
     })
   })
 
-  describe('logoutUser', () => {
+  describe('LOGOUT_USER', () => {
     it('logs the user out', () => {
       const store = useUserStore()
-      store.logoutUser()
+      store.LOGOUT_USER()
       expect(store.isLoggedIn).toBe(false)
     })
   })

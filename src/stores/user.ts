@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { ref } from 'vue'
 
 export const ADD_SELECTED_ORGANIZATIONS = 'ADD_SELECTED_ORGANIZATIONS'
 export const ADD_SELECTED_JOB_TYPES = 'ADD_SELECTED_JOB_TYPES'
@@ -12,33 +13,79 @@ export interface UserState {
   selectedDegrees: string[]
 }
 
-export const useUserStore = defineStore('user', {
-  state: (): UserState => ({
-    isLoggedIn: false,
-    selectedOrganizations: [],
-    selectedJobTypes: [],
-    selectedDegrees: []
-  }),
-  actions: {
-    loginUser() {
-      this.isLoggedIn = true
-    },
-    logoutUser() {
-      this.isLoggedIn = false
-    },
-    [ADD_SELECTED_ORGANIZATIONS](organizations: string[]) {
-      this.selectedOrganizations = organizations
-    },
-    [ADD_SELECTED_JOB_TYPES](jobTypes: string[]) {
-      this.selectedJobTypes = jobTypes
-    },
-    [ADD_SELECTED_DEGREES](degrees: string[]) {
-      this.selectedDegrees = degrees
-    },
-    [CLEAR_USER_JOB_FILTER_SELECTIONS]() {
-      this.selectedOrganizations = []
-      this.selectedJobTypes = []
-      this.selectedDegrees = []
-    }
+export const useUserStore = defineStore('user', () => {
+  const isLoggedIn = ref(false)
+  const selectedOrganizations = ref<string[]>([])
+  const selectedJobTypes = ref<string[]>([])
+  const selectedDegrees = ref<string[]>([])
+
+  const LOGIN_USER = () => {
+    isLoggedIn.value = true
+  }
+
+  const LOGOUT_USER = () => {
+    isLoggedIn.value = false
+  }
+
+  const ADD_SELECTED_ORGANIZATIONS = (organizations: string[]) => {
+    selectedOrganizations.value = organizations
+  }
+
+  const ADD_SELECTED_JOB_TYPES = (jobTypes: string[]) => {
+    selectedJobTypes.value = jobTypes
+  }
+
+  const ADD_SELECTED_DEGREES = (degrees: string[]) => {
+    selectedDegrees.value = degrees
+  }
+
+  const CLEAR_USER_JOB_FILTER_SELECTIONS = () => {
+    selectedOrganizations.value = []
+    selectedJobTypes.value = []
+    selectedDegrees.value = []
+  }
+
+  return {
+    isLoggedIn,
+    selectedOrganizations,
+    selectedJobTypes,
+    selectedDegrees,
+    LOGIN_USER,
+    LOGOUT_USER,
+    ADD_SELECTED_ORGANIZATIONS,
+    ADD_SELECTED_JOB_TYPES,
+    ADD_SELECTED_DEGREES,
+    CLEAR_USER_JOB_FILTER_SELECTIONS
   }
 })
+
+// export const useUserStore = defineStore('user', {
+//   state: (): UserState => ({
+//     isLoggedIn: false,
+//     selectedOrganizations: [],
+//     selectedJobTypes: [],
+//     selectedDegrees: []
+//   }),
+//   actions: {
+//     loginUser() {
+//       this.isLoggedIn = true
+//     },
+//     logoutUser() {
+//       this.isLoggedIn = false
+//     },
+//     [ADD_SELECTED_ORGANIZATIONS](organizations: string[]) {
+//       this.selectedOrganizations = organizations
+//     },
+//     [ADD_SELECTED_JOB_TYPES](jobTypes: string[]) {
+//       this.selectedJobTypes = jobTypes
+//     },
+//     [ADD_SELECTED_DEGREES](degrees: string[]) {
+//       this.selectedDegrees = degrees
+//     },
+//     [CLEAR_USER_JOB_FILTER_SELECTIONS]() {
+//       this.selectedOrganizations = []
+//       this.selectedJobTypes = []
+//       this.selectedDegrees = []
+//     }
+//   }
+// })
