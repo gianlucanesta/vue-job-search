@@ -25,6 +25,11 @@ describe('state', () => {
     const store = useUserStore()
     expect(store.selectedDegrees).toEqual([])
   })
+
+  it("store's user's search terms for skills and qualifications", () => {
+    const store = useUserStore()
+    expect(store.skillsSearchTerm).toBe('')
+  })
 })
 
 describe('actions', () => {
