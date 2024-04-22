@@ -12,23 +12,29 @@
         </div>
       </div>
 
-      <JobFiltersSidebarCheckboxGroup
-        header="Degrees"
-        :unique-values="UNIQUE_DEGREES"
-        :action="userStore.ADD_SELECTED_DEGREES"
-      />
+      <collapsible-accordion header="Degrees">
+        <JobFiltersSidebarCheckboxGroup
+          header="Degrees"
+          :unique-values="UNIQUE_DEGREES"
+          :action="userStore.ADD_SELECTED_DEGREES"
+        />
+      </collapsible-accordion>
 
-      <job-filters-sidebar-checkbox-group
-        header="Job Types"
-        :unique-values="UNIQUE_JOB_TYPES"
-        :action="userStore.ADD_SELECTED_JOB_TYPES"
-      />
+      <collapsible-accordion header="Job Types">
+        <job-filters-sidebar-checkbox-group
+          header="Job Types"
+          :unique-values="UNIQUE_JOB_TYPES"
+          :action="userStore.ADD_SELECTED_JOB_TYPES"
+        />
+      </collapsible-accordion>
 
-      <job-filters-sidebar-checkbox-group
-        header="Organizations"
-        :unique-values="UNIQUE_ORGANIZATIONS"
-        :action="userStore.ADD_SELECTED_ORGANIZATIONS"
-      />
+      <collapsible-accordion header="Organizations">
+        <job-filters-sidebar-checkbox-group
+          header="Organizations"
+          :unique-values="UNIQUE_ORGANIZATIONS"
+          :action="userStore.ADD_SELECTED_ORGANIZATIONS"
+        />
+      </collapsible-accordion>
     </section>
   </div>
 </template>
