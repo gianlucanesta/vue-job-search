@@ -162,5 +162,28 @@ describe('getters', () => {
 
       expect(result).toBe(true)
     })
+
+    it('handle inconsistent character casing', () => {
+      const userStore = useUserStore()
+      userStore.skillsSearchTerm = 'VuE'
+
+      const store = useJobsStore()
+      const job = createJob({ title: 'Vue Developer' })
+
+      const result = store.INCLUDE_JOB_BY_SKILLS(job)
+
+      expect(result).toBe(true)
+    })
+
+    describe('When the user has not entered any skills', () => {
+      it('includes job', () => {
+        const userStore = useUserStore()
+        userStore.skillsSearchTerm = ''
+        const store = useJobsStore()
+        const job = createJob({ title: 'Vue Developer' })
+        const result = store.INCLUDE_JOB_BY_SKILLS(job)
+        expect(result).toBe(true)
+      })
+    })
   })
 })

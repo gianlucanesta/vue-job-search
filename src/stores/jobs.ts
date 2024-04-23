@@ -60,7 +60,7 @@ export const useJobsStore = defineStore('jobs', {
     },
     [INCLUDE_JOB_BY_SKILLS]: () => (job: Job) => {
       const userStore = useUserStore()
-      return job.title.includes(userStore.skillsSearchTerm)
+      return job.title.toLowerCase().includes(userStore.skillsSearchTerm.toLowerCase())
     },
     [FILTERED_JOBS](state): Job[] {
       return state.jobs
