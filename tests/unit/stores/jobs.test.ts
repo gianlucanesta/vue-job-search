@@ -149,4 +149,18 @@ describe('getters', () => {
       expect(result).toBe(true)
     })
   })
+
+  describe('INCLUDE_JOB_BY_SKILLS', () => {
+    it("identifies if job matches user's skills", () => {
+      const userStore = useUserStore()
+      userStore.skillsSearchTerm = 'Vue'
+
+      const store = useJobsStore()
+      const job = createJob({ title: 'Vue Developer' })
+
+      const result = store.INCLUDE_JOB_BY_SKILLS(job)
+
+      expect(result).toBe(true)
+    })
+  })
 })
