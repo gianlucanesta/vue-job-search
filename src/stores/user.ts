@@ -4,6 +4,7 @@ import { ref } from 'vue'
 export const ADD_SELECTED_ORGANIZATIONS = 'ADD_SELECTED_ORGANIZATIONS'
 export const ADD_SELECTED_JOB_TYPES = 'ADD_SELECTED_JOB_TYPES'
 export const ADD_SELECTED_DEGREES = 'ADD_SELECTED_DEGREES'
+export const UPDATE_SKILLS_SEARCH_TERM = 'UPDATE_SKILLS_SEARCH_TERM'
 export const CLEAR_USER_JOB_FILTER_SELECTIONS = 'CLEAR_USER_JOB_FILTER_SELECTIONS'
 
 export const useUserStore = defineStore('user', () => {
@@ -33,6 +34,10 @@ export const useUserStore = defineStore('user', () => {
     selectedDegrees.value = degrees
   }
 
+  const UPDATE_SKILLS_SEARCH_TERM = (term: string) => {
+    skillsSearchTerm.value = term
+  }
+
   const CLEAR_USER_JOB_FILTER_SELECTIONS = () => {
     selectedOrganizations.value = []
     selectedJobTypes.value = []
@@ -50,6 +55,7 @@ export const useUserStore = defineStore('user', () => {
     ADD_SELECTED_ORGANIZATIONS,
     ADD_SELECTED_JOB_TYPES,
     ADD_SELECTED_DEGREES,
+    UPDATE_SKILLS_SEARCH_TERM,
     CLEAR_USER_JOB_FILTER_SELECTIONS
   }
 })
